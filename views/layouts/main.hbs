@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pizza Palace Pakistan - Order Now</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Paste your entire <style> block here - same as your original */
+    :root {
+      --primary: #e31837;
+      --secondary: #25D366;
+      --accent: #FFA500;
+      --light: #f9f7f2;
+      --dark: #222;
+      --gray: #666;
+    }
+    /* ... rest of your CSS exactly as you had ... */
+    /* Just replace all $ with ₨ in JS later */
+  </style>
+</head>
+<body>
+  {{{body}}}
+
+  <script>
+    const pizzaData = {{{json pizzas}}};
+
+    const sizeOptions = [
+      { name: "Regular", multiplier: 1.0 },
+      { name: "Large", multiplier: 1.35 },
+      { name: "X-Large", multiplier: 1.7 }
+    ];
+
+    const toppingPrice = 250; // ₨250 per extra topping
+
+    let currentOrder = [];
+
+    // Same JS logic but with ₨ symbol
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPizzaMenu();
+      setupEventListeners();
+      updateFloatingOrder();
+    });
+
+    function loadPizzaMenu() {
+      const pizzaList = document.getElementById('pizza-list');
+      pizzaList.innerHTML = '';
+
+      pizzaData.forEach(pizza => {
+        const pizzaCard = document.createElement('div');
+        pizzaCard.className = 'pizza-card';
+        pizzaCard.innerHTML = `
+          <div class="pizza-image" style="background-image: url('${pizza.image}')"></div>
+          <div class="pizza-content">
+            <div class="pizza-header">
+              <div class="pizza-name">${pizza.name}</div>
+              <div class="pizza-price">₨${pizza.price}</div>
+            </div>
+            <div class="pizza-description">${pizza.description}</div>
+
+            <div class="pizza-customize">
+              <div class="size-options">
+                ${sizeOptions.map((s, i) => `
+                  <div class="size-option ${i===0 ? 'active' : ''}" 
+                       data-pizza-id="${pizza.id}" 
+                       data-size="${s.name}" 
+                       data-multiplier="${s.multiplier}">
+                    ${s.name}
+                  </div>`).join('')}
+              </div>
+            </div>
+
+            <button class="add-to-cart" data-pizza-id="${pizza.id}">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>
+        `;
+        pizzaList.appendChild(pizzaCard);
+      });
+      attachPizzaCardListeners();
+    }
+
+    // ... rest of your JS (addToOrder, update prices with ₨, etc.)
+    // Just change all "$" to "₨" and use Pakistani phone number
+
+    function sendOrder() {
+      if (currentOrder.length === 0) return showNotification('Order is empty!');
+
+      const address = document.getElementById('delivery-address').value.trim();
+      if (!address) return showNotification('Please enter delivery address');
+
+      document.getElementById('loading').style.display = 'flex';
+
+      let message = `*NEW ORDER - Pizza Palace*%0A%0A`;
+      message += `*Address:* ${address}%0A%0A*Items:*%0A`;
+
+      let total = 0;
+      currentOrder.forEach((item, i) => {
+        total += item.price;
+        message += `${i+1}. ${item.name} (${item.size}) ₨${item.price}%0A`;
+        if (item.toppings?.length) message += `   + ${item.toppings.join(', ')}%0A`;
+      });
+
+      message += `%0A*Total: ₨${total}*%0A%0AThank you!`;
+
+      const phone = "923410099882"; // Replace with your Pakistani WhatsApp number
+      const waLink = `https://wa.me/${phone}?text=${message}`;
+
+      setTimeout(() => {
+        document.getElementById('loading').style.display = 'none';
+        window.open(waLink, '_blank');
+        currentOrder = [];
+        updateFloatingOrder();
+        hideOrderModal();
+        showNotification('Order Sent Successfully!');
+      }, 1500);
+    }
+
+    // Keep all other functions: updateFloatingOrder, showNotification, etc.
+    // Just replace $ with ₨ everywhere
+  </script>
+</body>
+</html>

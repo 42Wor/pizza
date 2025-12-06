@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HotBite Palace | Pizza & Burger</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <style>
+    :root{--bg:#0f0f1a;--card:#1a1a2e;--text:#e0e0ff;--accent:#ff2e63;--neon:#00ffea;--glow:0 0 20px rgba(255,46,99,0.6);}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:var(--bg);color:var(--text);font-family:'Segoe UI',sans-serif;overflow-x:hidden;padding-bottom:100px}
+    .header{background:linear-gradient(135deg,#ff2e63,#8a2be2);padding:20px;position:sticky;top:0;z-index:100;box-shadow:0 5px 20px rgba(255,46,99,0.4)}
+    .logo{font-size:28px;font-weight:900;display:flex;align-items:center;gap:12px}
+    .wa-icon{background:#25D366;color:#fff;width:50px;height:50px;border-radius:50%;display:grid;place-items:center;font-size:26px;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px #25D366}50%{box-shadow:0 0 40px #25D366}}
+    .hero{background:url('https://images.unsplash.com/photo-1628840042765-356cda07504e?w=1200') center/cover;padding:80px 20px;text-align:center;position:relative}
+    .hero::before{content:"";position:absolute;inset:0;background:rgba(15,15,26,0.7)}
+    .hero h1{font-size:42px;font-weight:900;background:linear-gradient(45deg,#ff2e63,#00ffea);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .hero p{font-size:20px;margin-top:10px}
+    .tabs{padding:15px;overflow-x:auto;display:flex;gap:15px;background:rgba(26,26,46,0.8);backdrop-filter:blur(10px)}
+    .tab{padding:12px 25px;border-radius:50px;background:rgba(255,255,255,0.1);cursor:pointer;transition:0.3s;border:2px solid transparent}
+    .tab.active,.tab:hover{background:var(--accent);color:#fff;border-color:#fff;box-shadow:var(--glow)}
+    .menu{padding:20px;display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+    .card{background:var(--card);border-radius:20px;overflow:hidden;position:relative;transition:0.4s;transform:translateY(0)}
+    .card:hover{transform:translateY(-15px);box-shadow:var(--glow)}
+    .card img{width:100%;height:220px;object-fit:cover}
+    .card-body{padding:20px;text-align:center}
+    .name{font-size:22px;font-weight:800;margin:10px 0;background:linear-gradient(45deg,#ff2e63,#00ffea);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .price{font-size:26px;font-weight:900;color:var(--neon);text-shadow:0 0 15px #00ffea}
+    .add-btn{margin-top:15px;width:100%;padding:15px;background:var(--accent);color:#fff;border:none;border-radius:15px;font-size:18px;font-weight:800;cursor:pointer;transition:0.3s;box-shadow:var(--glow)}
+    .add-btn:hover{background:#ff5e8a;transform:scale(1.05)}
+    .float-cart{position:fixed;bottom:25px;right:25px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
+    .total-box{background:var(--card);padding:12px 20px;border-radius:50px;box-shadow:var(--glow);font-size:20px;font-weight:900;display:none;align-items:center;gap:10px;border:2px solid var(--accent)}
+    .cart-btn{width:70px;height:70px;background:var(--accent);border-radius:50%;display:grid;place-items:center;font-size:32px;box-shadow:var(--glow);border:none;cursor:pointer;animation:bounce 2s infinite}
+    @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+    .badge{position:absolute;top:-10px;right:-10px;background:#25D366;color:#fff;width:32px;height:32px;border-radius:50%;font-weight:900;display:grid;place-items:center;animation:pulse 2s infinite}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:none;align-items:flex-end;z-index:1000;padding:20px}
+    .modal-content{background:var(--card);border-radius:30px 30px 0 0;max-height:90vh;overflow-y:auto;padding:25px;border:3px solid var(--accent)}
+    .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .modal-header h2{font-size:28px;background:linear-gradient(45deg,#ff2e63,#00ffea);background-clip:text;-webkit-background-clip:text;color:transparent}
+    .item{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px dashed #444}
+    .total-amt{font-size:28px;font-weight:900;color:var(--neon);text-shadow:0 0 20px #00ffea}
+    .send-btn{background:var(--accent);color:#fff;padding:18px;border:none;border-radius:20px;width:100%;font-size:20px;font-weight:900;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:15px;box-shadow:var(--glow);cursor:pointer}
+    .notify{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#fff;padding:16px 32px;border-radius:50px;z-index:2000;display:none;font-weight:700;box-shadow:var(--glow);animation:pop 0.5s}
+    @keyframes pop{0%{transform:translateX(-50%) scale(0)}100%{transform:translateX(-50%) scale(1)}}
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div style="display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto">
+      <div class="logo">
+        <i class="fas fa-pizza-slice"></i> HotBite Palace
+      </div>
+      <a href="https://wa.me/923410099882" class="wa-icon">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div style="position:relative;z-index:2">
+      <h1>Craving Pizza or Burger?</h1>
+      <p>Order Now – Starting from just ₨749</p>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-type="all">All Items</div>
+    <div class="tab" data-type="pizza">Pizza Only</div>
+    <div class="tab" data-type="burger">Burger Only</div>
+  </div>
+
+  <div class="menu" id="menu"></div>
+
+  <div class="float-cart">
+    <div class="total-box" id="total-box">
+      <i class="fas fa-shopping-cart"></i> <span id="total-amount">₨0</span>
+    </div>
+    <button class="cart-btn" id="open-cart">
+      <i class="fas fa-receipt"></i>
+      <span class="badge" id="count">0</span>
+    </button>
+  </div>
+
+  <div class="modal" id="cart-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Your Order</h2>
+        <button style="background:none;border:none;color:#fff;font-size:32px;cursor:pointer" id="close-modal">×</button>
+      </div>
+      <div id="order-items">
+        <p style="text-align:center;padding:50px;color:#888">Your cart is empty</p>
+      </div>
+      <div style="margin:20px 0;padding:20px 0;border-top:3px solid var(--accent)">
+        <div style="display:flex;justify-content:space-between">
+          <span style="font-size:24px">Total Amount:</span>
+          <span class="total-amt" id="modal-total">₨0</span>
+        </div>
+      </div>
+      <textarea id="address" placeholder="Enter your full delivery address..." style="width:100%;padding:15px;border-radius:15px;background:#16213e;color:#fff;border:2px solid var(--accent);min-height:110px;font-size:16px;margin-bottom:15px"></textarea>
+      <button class="send-btn" id="send-order">
+        <i class="fab fa-whatsapp"></i> Send Order on WhatsApp
+      </button>
+    </div>
+  </div>
+
+  <div class="notify" id="notify"></div>
+
+  <script>
+    const menu = {{{json menu}}};
+    let cart = [];
+
+    function render(filter = "all") {
+      const el = document.getElementById("menu");
+      el.innerHTML = "";
+      const items = filter === "all" ? menu : menu.filter(i => i.type === filter);
+      items.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="card-body">
+            <div class="name">${item.name}</div>
+            <div class="price">₨${item.price}</div>
+            <button class="add-btn" data-id="${item.id}">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+          </div>`;
+        el.appendChild(div);
+      });
+    }
+
+    function updateCart() {
+      const total = cart.reduce((a,b) => a + b.price, 0);
+      document.getElementById("count").textContent = cart.length;
+      document.getElementById("total-amount").textContent = `₨${total}`;
+      document.getElementById("modal-total").textContent = `₨${total}`;
+      document.getElementById("total-box").style.display = total > 0 ? "flex" : "none";
+
+      const container = document.getElementById("order-items");
+      if (!cart.length) {
+        container.innerHTML = "<p style='text-align:center;padding:50px;color:#888'>Your cart is empty</p>";
+        return;
+      }
+      container.innerHTML = "";
+      cart.forEach((it, i) => {
+        const div = document.createElement("div");
+        div.className = "item";
+        div.innerHTML = `
+          <div><strong>${i+1}. ${it.name}</strong></div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="color:#00ffea;font-weight:800">₨${it.price}</span>
+            <button style="background:#ff2e63;color:#fff;width:35px;height:35px;border:none;border-radius:50%;font-size:20px;cursor:pointer" onclick="removeItem(${it.uid})">×</button>
+          </div>`;
+        container.appendChild(div);
+      });
+    }
+
+    window.removeItem = id => { cart = cart.filter(x => x.uid !== id); updateCart(); };
+
+    document.getElementById("menu").addEventListener("click", e => {
+      const btn = e.target.closest(".add-btn");
+      if (btn) {
+        const id = parseInt(btn.dataset.id);
+        const item = menu.find(x => x.id === id);
+        cart.push({ ...item, uid: Date.now() });
+        updateCart();
+        document.getElementById("notify").textContent = `${item.name} Added!`;
+        document.getElementById("notify").style.display = "block";
+        setTimeout(() => document.getElementById("notify").style.display = "none", 2500);
+      }
+    });
+
+    document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+      document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+      t.classList.add("active");
+      render(t.dataset.type);
+    });
+
+    document.getElementById("open-cart").onclick = () => { updateCart(); document.getElementById("cart-modal").style.display = "flex"; };
+    document.getElementById("close-modal").onclick = () => document.getElementById("cart-modal").style.display = "none";
+    document.getElementById("cart-modal").onclick = e => { if(e.target === e.currentTarget) e.target.style.display = "none"; };
+
+    document.getElementById("send-order").onclick = () => {
+      if (!cart.length) return alert("Cart is empty!");
+      const addr = document.getElementById("address").value.trim();
+      if (!addr) return alert("Please enter your address");
+
+      let msg = `*New Order - HotBite Palace*\n\n*Address:* ${addr}\n\n*Order Details:*\n`;
+      cart.forEach((it,i) => msg += `${i+1}. ${it.name} - ₨${it.price}\n`);
+      msg += `\n*Total: ₨${cart.reduce((a,b)=>a+b.price,0)}*\n\nThank you!`;
+
+      window.open(`https://wa.me/923410099882?text=${encodeURIComponent(msg)}`, "_blank");
+      cart = []; updateCart(); document.getElementById("cart-modal").style.display = "none"; document.getElementById("address").value = "";
+      document.getElementById("notify").textContent = "Order Sent Successfully!";
+      document.getElementById("notify").style.display = "block";
+      setTimeout(() => document.getElementById("notify").style.display = "none", 4000);
+    };
+
+    render();
+  </script>
+</body>
+</html>
