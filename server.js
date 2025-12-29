@@ -6,29 +6,40 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// FIX: Use path.join for Windows compatibility
-const imagePath = path.join('C:', 'Users', 'maaz', 'Desktop', 'pizza', 'image');
+// Serve static images
+const imagePath = path.join(__dirname, 'image');
 app.use('/image', express.static(imagePath));
 
-app.engine('hbs', engine({ 
+// Handlebars setup
+app.engine('hbs', engine({
   extname: '.hbs',
-  helpers: { json: context => JSON.stringify(context) }
+  defaultLayout: 'main',
+  layoutsDir: path.join(__dirname, 'views/layouts'),
+  helpers: {
+    json: (context) => JSON.stringify(context)
+  }
 }));
 app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
-// Error checking: Log if the menu file exists
-const menuPath = './data/menu.json';
+// Load menu
+const menuPath = path.join(__dirname, 'data/menu.json');
 if (!fs.existsSync(menuPath)) {
-    console.error("❌ ERROR: menu.json not found at " + menuPath);
-    process.exit(1);
+  console.error("❌ ERROR: menu.json not found at", menuPath);
+  process.exit(1);
 }
 const menu = JSON.parse(fs.readFileSync(menuPath, 'utf-8'));
 
+// Route
 app.get('/', (req, res) => {
-  res.render('home', { menu });
+  res.render('home', {
+    menu,
+    title: 'Jee Bhai Cafe - High Quality Fast Food',
+    year: new Date().getFullYear()
+  });
 });
 
 app.listen(PORT, () => {
   console.log(`🚀 Server running: http://localhost:${PORT}`);
-  console.log(`📁 Serving images from: ${imagePath}`);
+  console.log(`📁 Images served from: ${imagePath}`);
 });

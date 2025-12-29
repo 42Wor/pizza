@@ -6,7 +6,20 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "express": "^4.19.2",
-    "express-handlebars": "^8.0.1"
-  }
+    "express": "^4.22.1",
+    "express-handlebars": "^8.0.4"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/42Wor/pizza.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/42Wor/pizza/issues"
+  },
+  "homepage": "https://github.com/42Wor/pizza#readme"
 }
