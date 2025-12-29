@@ -388,12 +388,15 @@
         const address = document.getElementById('delivery-address').value.trim();
         if (!address) return alert('Please enter your address & phone number');
 
-        let message = `*NEW ORDER - JEE BHAI CAFE*%0A%0A`;
+        let message = `*NEW ORDER - JEE BHAI CAFE\n`;
         cart.forEach((item, i) => {
-          message += `${i+1}. ${item.name} - ₨${item.price}%0A`;
+          message += `\n${i+1}. ${item.name} - ₨${item.price}%\n`;
         });
         const total = cart.reduce((sum, item) => sum + item.price, 0);
-        message += `%0A*Total:* ₨${total}%0A*Address & Phone:* ${address}%0A%0AThank you!`;
+        message += `*Total:* ₨${total}\n`;
+        message += `*Address & Phone:* ${encodeURIComponent(address)}\n`;
+        message += `Thank you! 😊`;
+
 
         const phone = '923410099882'; // Replace with your number
         const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
