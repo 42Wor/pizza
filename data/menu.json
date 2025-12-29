@@ -21,7 +21,7 @@
     "price": 2199,
     "type": "pizza",
     "category": "Beef",
-    "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&q=85&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=85&auto=format&fit=crop"
   },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "price": 999,
     "type": "burger",
     "category": "Special",
-    "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=85&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1115&auto=format&fit=crop"
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "price": 1999,
     "type": "pizza",
     "category": "Chicken",
-    "image": "https://images.unsplash.com/photo-1513104890138-7c749659a743?w=800&q=85&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=781&auto=format&fit=crop"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "price": 799,
     "type": "burger",
     "category": "Chicken",
-    "image": "https://images.unsplash.com/photo-1571091655789-405eb7a0e5d7?w=800&q=85&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&q=85&auto=format&fit=crop"
   },
   {
     "id": 7,
@@ -53,7 +53,7 @@
     "price": 2499,
     "type": "pizza",
     "category": "Special",
-    "image": "https://images.unsplash.com/photo-1552539612-6d36d3fdf9b5?w=800&q=85&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1571066811602-716837d681de?w=800&q=85&auto=format&fit=crop"
   },
   {
     "id": 8,
@@ -61,6 +61,6 @@
     "price": 899,
     "type": "burger",
     "category": "Special",
-    "image": "https://images.unsplash.com/photo-1598182198871-d3f4ab4fd47a?w=800&q=85&auto=format&fit=crop"
+    "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=85&auto=format&fit=crop"
   }
 ]
