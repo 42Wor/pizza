@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8be235458bbbfe332ed5f6178249de48 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_8be235458bbbfe332ed5f6178249de48" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8be235458bbbfe332ed5f6178249de48 = L.map(
+                "map_8be235458bbbfe332ed5f6178249de48",
+                {
+                    center: [31.5204, 74.3587],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 11,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_45aaf1840e7df09e047dbadcba5b7843 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_45aaf1840e7df09e047dbadcba5b7843.addTo(map_8be235458bbbfe332ed5f6178249de48);
+        
+    
+            var circle_6dad7ba4db4438b7fba07801c730559f = L.circle(
+                [31.5204, 74.3587],
+                {"bubblingMouseEvents": true, "color": "#FF9F1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FF9F1C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20000, "stroke": true, "weight": 3}
+            ).addTo(map_8be235458bbbfe332ed5f6178249de48);
+        
+    
+        var popup_ba7a800183943d1310b1b11518493345 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9e21afdfabd5e0204a594c34d803c2d5 = $(`<div id="html_9e21afdfabd5e0204a594c34d803c2d5" style="width: 100.0%; height: 100.0%;">20km Delivery Zone</div>`)[0];
+                popup_ba7a800183943d1310b1b11518493345.setContent(html_9e21afdfabd5e0204a594c34d803c2d5);
+            
+        
+
+        circle_6dad7ba4db4438b7fba07801c730559f.bindPopup(popup_ba7a800183943d1310b1b11518493345)
+        ;
+
+        
+    
+    
+            var marker_d19fa8268399097c410a15e0cf7532f1 = L.marker(
+                [31.5204, 74.3587],
+                {
+}
+            ).addTo(map_8be235458bbbfe332ed5f6178249de48);
+        
+    
+            var icon_c54352d2c75de60ef2340c740a54fe17 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "cutlery",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7bc5b152e5b37b869f6431cdca0837f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_64c7eef7f4694c079a6ef33db6280802 = $(`<div id="html_64c7eef7f4694c079a6ef33db6280802" style="width: 100.0%; height: 100.0%;"><b>Jee Bhai Cafe</b></div>`)[0];
+                popup_7bc5b152e5b37b869f6431cdca0837f6.setContent(html_64c7eef7f4694c079a6ef33db6280802);
+            
+        
+
+        marker_d19fa8268399097c410a15e0cf7532f1.bindPopup(popup_7bc5b152e5b37b869f6431cdca0837f6)
+        ;
+
+        
+    
+    
+                marker_d19fa8268399097c410a15e0cf7532f1.setIcon(icon_c54352d2c75de60ef2340c740a54fe17);
+            
+</script>
+</html>

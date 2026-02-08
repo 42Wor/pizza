@@ -6,15 +6,15 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
-// Serve static images
-const imagePath = path.join(__dirname, 'image');
-app.use('/image', express.static(imagePath));
+// Middleware
+app.use('/image', express.static(path.join(__dirname, 'image')));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Handlebars setup
+// Handlebars Setup (Layouts Disabled)
 app.engine('hbs', engine({
   extname: '.hbs',
-  defaultLayout: 'main',
-  layoutsDir: path.join(__dirname, 'views/layouts'),
+  defaultLayout: false, // <--- This tells it to not look for a layout file
   helpers: {
     json: (context) => JSON.stringify(context)
   }
@@ -22,24 +22,25 @@ app.engine('hbs', engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Load menu
-const menuPath = path.join(__dirname, 'data/menu.json');
-if (!fs.existsSync(menuPath)) {
-  console.error("❌ ERROR: menu.json not found at", menuPath);
-  process.exit(1);
-}
-const menu = JSON.parse(fs.readFileSync(menuPath, 'utf-8'));
+// Load Data
+const loadData = () => {
+  const filePath = path.join(__dirname, 'data', 'data.json');
+  if (fs.existsSync(filePath)) {
+    return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  }
+  return { deals: [], menu: [] };
+};
 
 // Route
 app.get('/', (req, res) => {
-  res.render('home', {
-    menu,
-    title: 'Jee Bhai Cafe - High Quality Fast Food',
-    year: new Date().getFullYear()
+  const data = loadData();
+  res.render('index', { // Renders views/index.hbs
+    title: 'Jee Bhai Cafe',
+    deals: data.deals,
+    menu: data.menu
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running: http://localhost:${PORT}`);
-  console.log(`📁 Images served from: ${imagePath}`);
+  console.log(`🚀 Server running at http://localhost:${PORT}`);
 });

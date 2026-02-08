@@ -1,0 +1,114 @@
+{
+  "deals": [
+    {
+      "id": 101,
+      "name": "Student Zinger Deal",
+      "price": 450,
+      "image": "/image/deal1.jpeg",
+      "description": "1 Zinger Burger + 1 Regular Drink"
+    },
+    {
+      "id": 102,
+      "name": "Couple Deal",
+      "price": 850,
+      "image": "/image/deal2.jpeg",
+      "description": "2 Zingers + 2 Drinks + Regular Fries"
+    },
+    {
+      "id": 103,
+      "name": "Family Feast",
+      "price": 1600,
+      "image": "/image/deal3.jpeg",
+      "description": "4 Chicken Burgers + Large Fries + 1.5L Drink"
+    },
+    {
+      "id": 104,
+      "name": "Pizza Party",
+      "price": 1999,
+      "image": "/image/deal4.jpeg",
+      "description": "2 Large Pizzas + 1.5L Drink"
+    }
+  ],
+  "menu": [
+    {
+      "id": 1,
+      "name": "Chicken Tikka Pizza",
+      "price": 1899,
+      "type": "pizza",
+      "description": "Spicy chicken chunks, onions & cheese",
+      "image": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=800&q=85&auto=format&fit=crop"
+    },
+    {
+      "id": 2,
+      "name": "Zinger Shwarma Burger",
+      "price": 749,
+      "type": "burger",
+      "description": "Crispy fillet with special sauce",
+      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=85&auto=format&fit=crop"
+    },
+    {
+      "id": 3,
+      "name": "Beef Pepperoni Pizza",
+      "price": 2199,
+      "type": "pizza",
+      "description": "Loaded with pepperoni & mozzarella",
+      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=85&auto=format&fit=crop"
+    },
+    {
+      "id": 4,
+      "name": "Tower Burger",
+      "price": 999,
+      "type": "burger",
+      "description": "Double patty with cheese & hashbrown",
+      "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1115&auto=format&fit=crop"
+    },
+    {
+      "id": 5,
+      "name": "Fajita Sizzler Pizza",
+      "price": 1999,
+      "type": "pizza",
+      "description": "Mexican style chicken with capsicum",
+      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=781&auto=format&fit=crop"
+    },
+    {
+      "id": 6,
+      "name": "Crispy Cheese Burger",
+      "price": 799,
+      "type": "burger",
+      "description": "Crunchy chicken with cheddar slice",
+      "image": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&q=85&auto=format&fit=crop"
+    },
+    {
+      "id": 7,
+      "name": "Supreme Loaded Pizza",
+      "price": 2499,
+      "type": "pizza",
+      "description": "Chicken, sausages, veggies & olives",
+      "image": "https://images.unsplash.com/photo-1571066811602-716837d681de?w=800&q=85&auto=format&fit=crop"
+    },
+    {
+      "id": 8,
+      "name": "Grilled Club Burger",
+      "price": 899,
+      "type": "burger",
+      "description": "Smoky grilled patty with lettuce",
+      "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=85&auto=format&fit=crop"
+    },
+    {
+      "id": 9,
+      "name": "Masala Fries",
+      "price": 350,
+      "type": "fries",
+      "description": "Crispy fries with special masala",
+      "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=800&q=85"
+    },
+    {
+      "id": 10,
+      "name": "Club Sandwich",
+      "price": 650,
+      "type": "sandwich",
+      "description": "Chicken, egg, cheese & mayo",
+      "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=85"
+    }
+  ]
+}
