@@ -4,7 +4,7 @@ import folium
 SHOP_LAT = 30.241993
 
 SHOP_LNG = 71.889235
-SHOP_NAME = "Jee Bhai Cafe"
+SHOP_NAME = "Red & Chilli"
 RADIUS_KM = 20
 
 def create_custom_map():

@@ -157,12 +157,8 @@
 
     <div class="section-title"><i class="fas fa-utensils"></i> Our Menu</div>
     
-    <div class="category-strip">
-        <button class="cat-pill active" onclick="renderMenu('all', this)">All</button>
-        <button class="cat-pill" onclick="renderMenu('burger', this)">Burgers</button>
-        <button class="cat-pill" onclick="renderMenu('pizza', this)">Pizza</button>
-        <button class="cat-pill" onclick="renderMenu('fries', this)">Fries</button>
-        <button class="cat-pill" onclick="renderMenu('sandwich', this)">Sandwich</button>
+    <div class="category-strip" id="category-container">
+        <!-- Category pills will be dynamically inserted here -->
     </div>
 
     <div class="menu-grid" id="menu-grid"></div>
@@ -213,6 +209,16 @@
         const allProducts = [...dealsData, ...menuData];
         let cart = [];
 
+        function renderCategories() {
+            const categories = ['all', ...new Set(menuData.map(item => item.type.toLowerCase()))];
+            const container = document.getElementById('category-container');
+            container.innerHTML = categories.map(cat => `
+                <button class="cat-pill ${cat === 'all' ? 'active' : ''}" onclick="renderMenu('${cat}', this)">
+                    ${cat.charAt(0).toUpperCase() + cat.slice(1)}
+                </button>
+            `).join('');
+        }
+
         function renderMenu(type, btn) {
             if(btn) {
                 document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
@@ -241,34 +247,47 @@
         function addToCart(id) {
             const item = allProducts.find(p => p.id === id);
             if(item) {
-                cart.push(item);
+                const cartItem = cart.find(p => p.id === id);
+                if (cartItem) {
+                    cartItem.quantity++;
+                } else {
+                    cart.push({...item, quantity: 1});
+                }
                 updateCartUI();
                 showToast(`Added ${item.name}`);
             }
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
+        function removeFromCart(id) {
+            const itemIndex = cart.findIndex(p => p.id === id);
+            if (itemIndex > -1) {
+                const item = cart[itemIndex];
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+                updateCartUI();
+            }
         }
 
         function updateCartUI() {
-            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-count').innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
             const list = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
             list.innerHTML = '';
             let total = 0;
             if(cart.length === 0) list.innerHTML = '<p style="text-align:center; color:#777; margin-top:20px;">Cart is empty</p>';
-            cart.forEach((item, index) => {
-                total += item.price;
+            cart.forEach((item) => {
+                total += item.price * item.quantity;
                 list.innerHTML += `
                     <div class="cart-item">
                         <img src="${item.image}" onerror="this.src='https://placehold.co/50'">
                         <div style="flex-grow:1">
-                            <div style="font-size:0.9rem; font-weight:600;">${item.name}</div>
+                            <div style="font-size:0.9rem; font-weight:600;">${item.name} (x${item.quantity})</div>
                             <div style="color:var(--primary); font-size:0.85rem;">₨${item.price}</div>
                         </div>
-                        <i class="fas fa-trash" style="color:#ff4444; cursor:pointer" onclick="removeFromCart(${index})"></i>
+                        <i class="fas fa-trash" style="color:#ff4444; cursor:pointer" onclick="removeFromCart(${item.id})"></i>
                     </div>
                 `;
             });
@@ -328,6 +347,7 @@
         }
 
         // Init
+        renderCategories();
         renderMenu('all');
     </script>
 </body>
