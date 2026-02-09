@@ -158,10 +158,26 @@
     <div class="section-title"><i class="fas fa-utensils"></i> Our Menu</div>
     
     <div class="category-strip" id="category-container">
-        <!-- Category pills will be dynamically inserted here -->
+        {{#each categories}}
+          <button class="cat-pill {{#if @first}}active{{/if}}" data-cat="{{this.key}}" onclick="filterMenu(this)">{{this.label}}</button>
+        {{/each}}
     </div>
 
-    <div class="menu-grid" id="menu-grid"></div>
+    <div class="menu-grid" id="menu-grid">
+      {{#each menu}}
+      <div class="menu-card" data-type="{{type}}" data-id="{{id}}">
+        <img src="{{image}}" class="menu-img" onerror="this.src='https://placehold.co/200?text=Food'">
+        <div class="menu-content">
+          <div class="menu-name">{{name}}</div>
+          <div class="menu-desc">{{description}}</div>
+          <div class="menu-footer">
+            <div style="font-weight:700; color:var(--primary)">₨{{price}}</div>
+            <button class="btn-icon" onclick="addToCart({{id}})"><i class="fas fa-plus"></i></button>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
 
     <div class="fab-cart" onclick="toggleCart()">
         <i class="fas fa-shopping-bag" style="font-size: 1.4rem; color: white;"></i>
@@ -209,40 +225,7 @@
         const allProducts = [...dealsData, ...menuData];
         let cart = [];
 
-        function renderCategories() {
-            const categories = ['all', ...new Set(menuData.map(item => item.type.toLowerCase()))];
-            const container = document.getElementById('category-container');
-            container.innerHTML = categories.map(cat => `
-                <button class="cat-pill ${cat === 'all' ? 'active' : ''}" onclick="renderMenu('${cat}', this)">
-                    ${cat.charAt(0).toUpperCase() + cat.slice(1)}
-                </button>
-            `).join('');
-        }
-
-        function renderMenu(type, btn) {
-            if(btn) {
-                document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-            }
-            const grid = document.getElementById('menu-grid');
-            grid.innerHTML = '';
-            const items = type === 'all' ? menuData : menuData.filter(i => i.type.toLowerCase() === type.toLowerCase());
-            items.forEach(item => {
-                grid.innerHTML += `
-                    <div class="menu-card">
-                        <img src="${item.image}" class="menu-img" onerror="this.src='https://placehold.co/200?text=Food'">
-                        <div class="menu-content">
-                            <div class="menu-name">${item.name}</div>
-                            <div class="menu-desc">${item.description}</div>
-                            <div class="menu-footer">
-                                <div style="font-weight:700; color:var(--primary)">₨${item.price}</div>
-                                <button class="btn-icon" onclick="addToCart(${item.id})"><i class="fas fa-plus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            });
-        }
+        // Categories/menu rendered on server via Handlebars; client uses filterMenu() to filter.
 
         function addToCart(id) {
             const item = allProducts.find(p => p.id === id);
@@ -346,9 +329,24 @@
             document.getElementById('deal-modal').classList.remove('active');
         }
 
-        // Init
-        renderCategories();
-        renderMenu('all');
+        // Filter menu by category (server-side rendered items)
+        function filterMenu(btn) {
+            document.querySelectorAll('.cat-pill').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const cat = btn.getAttribute('data-cat');
+            document.querySelectorAll('.menu-card').forEach(card => {
+                if (cat === 'all' || card.getAttribute('data-type').toLowerCase() === cat.toLowerCase()) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Ensure all items visible on load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.menu-card').forEach(c => c.style.display = 'flex');
+        });
     </script>
 </body>
 </html>

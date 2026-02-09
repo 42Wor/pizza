@@ -38,12 +38,20 @@ if (fs.existsSync(dataFilePath)) {
   }
 }
 
+// Build categories (server-side) for menu filters
+const categories = [
+  { key: 'all', label: 'All' },
+  ...Array.from(new Set(data.menu.map(i => i.type.toLowerCase())))
+    .map(c => ({ key: c, label: c.charAt(0).toUpperCase() + c.slice(1) }))
+];
+
 // Route
 app.get('/', (req, res) => {
   res.render('index', {
     title: 'Red & Chilli',
     deals: data.deals,
-    menu: data.menu
+    menu: data.menu,
+    categories: categories
   });
 });
 
