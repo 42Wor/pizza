@@ -12,7 +12,15 @@ const app = express();
 const PORT = 3000;
 
 // Middleware
-app.use('/image', express.static(path.join(__dirname, 'image')));
+app.use('/image', express.static(path.join(__dirname, 'image'), {
+  maxAge: '30d',
+  setHeaders: (res, filePath) => {
+    const ext = path.extname(filePath).toLowerCase();
+    if (['.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg'].includes(ext)) {
+      res.setHeader('Cache-Control', 'public, max-age=2592000, immutable');
+    }
+  }
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -38,20 +46,21 @@ if (fs.existsSync(dataFilePath)) {
   }
 }
 
-// Build categories (server-side) for menu filters
-const categories = [
-  { key: 'all', label: 'All' },
-  ...Array.from(new Set(data.menu.map(i => i.type.toLowerCase())))
-    .map(c => ({ key: c, label: c.charAt(0).toUpperCase() + c.slice(1) }))
-];
-
 // Route
 app.get('/', (req, res) => {
+  // Compute categories per-request so changes in data.json don't require restart
+  const categories = [
+    { key: 'all', label: 'All' },
+    ...Array.from(new Set((data.menu || []).map(i => (i.type || '').toLowerCase())))
+      .filter(c => c)
+      .map(c => ({ key: c, label: c.charAt(0).toUpperCase() + c.slice(1) }))
+  ];
+
   res.render('index', {
     title: 'Red & Chilli',
     deals: data.deals,
     menu: data.menu,
-    categories: categories
+    categories
   });
 });
 
