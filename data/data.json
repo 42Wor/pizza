@@ -2,113 +2,341 @@
   "deals": [
     {
       "id": 101,
-      "name": "Student Zinger Deal",
-      "price": 450,
-      "image": "https://images.unsplash.com/photo-1571066811602-716837d681de?w=800&q=85&auto=format&fit=crop",
-      "description": "1 Zinger Burger + 1 Regular Drink"
+      "name": "Deal 1 (Combo)",
+      "price": 1949,
+      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Large Pizza",
+        "1 Small Pasta",
+        "1 Fries (Small)",
+        "1 Zinger Burger",
+        "1.5 Ltr Drink"
+      ]
     },
     {
       "id": 102,
-      "name": "Couple Deal",
-      "price": 850,
-      "image": "/image/deal2.jpeg",
-      "description": "2 Zingers + 2 Drinks + Regular Fries"
+      "name": "Deal 2 (Single)",
+      "price": 699,
+      "image": "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Small Pizza",
+        "1 Zinger Burger",
+        "500ml Drink"
+      ]
     },
     {
       "id": 103,
-      "name": "Family Feast",
-      "price": 1600,
-      "image": "/image/deal3.jpeg",
-      "description": "4 Chicken Burgers + Large Fries + 1.5L Drink"
+      "name": "Family Platter",
+      "price": 2749,
+      "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Large Pizza",
+        "1 Medium Pizza",
+        "1 Fries",
+        "1 Small Pasta",
+        "1 Zinger Burger",
+        "3 Nuggets",
+        "3 Wings",
+        "2.25 Ltr Drink"
+      ]
     },
     {
-      "id": 104,
-      "name": "Pizza Party",
-      "price": 1999,
-      "image": "/image/deal4.jpeg",
-      "description": "2 Large Pizzas + 1.5L Drink"
+      "id": 201,
+      "name": "Deal 1 (Large)",
+      "price": 1100,
+      "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Large Pizza",
+        "1 Liter Drink"
+      ]
+    },
+    {
+      "id": 202,
+      "name": "Deal 2 (Double Large)",
+      "price": 1949,
+      "image": "https://images.unsplash.com/photo-1593560708920-63892806d936?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "2 Large Pizzas",
+        "1.5 Liter Drink"
+      ]
+    },
+    {
+      "id": 301,
+      "name": "Student Deal 1",
+      "price": 449,
+      "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Small Pizza",
+        "Fries",
+        "Time: 2:00 PM - 5:00 PM"
+      ]
+    },
+    {
+      "id": 303,
+      "name": "Student Zinger Deal",
+      "price": 349,
+      "image": "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Zinger Burger",
+        "300ml Drink",
+        "Time: 2:00 PM - 5:00 PM"
+      ]
+    },
+    {
+      "id": 401,
+      "name": "Night Deal 1",
+      "price": 1449,
+      "image": "https://images.unsplash.com/photo-1595295333158-4742f28fbd85?auto=format&fit=crop&w=500&q=60",
+      "items": [
+        "1 Medium Pizza",
+        "1 Zinger Burger",
+        "3 Nuggets",
+        "3 Wings",
+        "1 Liter Drink",
+        "Time: 9:00 PM - 12:00 AM"
+      ]
     }
   ],
   "menu": [
     {
       "id": 1,
-      "name": "Chicken Tikka Pizza",
-      "price": 1899,
-      "type": "pizza",
-      "description": "Spicy chicken chunks, onions & cheese",
-      "image": "https://images.unsplash.com/photo-1604068549290-dea0e4a305ca?w=800&q=85&auto=format&fit=crop"
+      "name": "Petti Burger",
+      "price": 249,
+      "type": "burger",
+      "description": "Classic chicken patty burger",
+      "image": "https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 2,
-      "name": "Zinger Shwarma Burger",
-      "price": 749,
+      "name": "Zinger Burger",
+      "price": 299,
       "type": "burger",
-      "description": "Crispy fillet with special sauce",
-      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=85&auto=format&fit=crop"
+      "description": "Crispy chicken thigh fillet",
+      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 3,
-      "name": "Beef Pepperoni Pizza",
-      "price": 2199,
-      "type": "pizza",
-      "description": "Loaded with pepperoni & mozzarella",
-      "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=85&auto=format&fit=crop"
+      "name": "Zinger Cheese Burger",
+      "price": 399,
+      "type": "burger",
+      "description": "Zinger with melted cheese slice",
+      "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 4,
       "name": "Tower Burger",
-      "price": 999,
+      "price": 449,
       "type": "burger",
-      "description": "Double patty with cheese & hashbrown",
-      "image": "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=1115&auto=format&fit=crop"
+      "description": "Tall burger with double crunch",
+      "image": "https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 5,
-      "name": "Fajita Sizzler Pizza",
-      "price": 1999,
-      "type": "pizza",
-      "description": "Mexican style chicken with capsicum",
-      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=781&auto=format&fit=crop"
+      "name": "Mighty Burger",
+      "price": 549,
+      "type": "burger",
+      "description": "Extra large loaded burger",
+      "image": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 6,
-      "name": "Crispy Cheese Burger",
-      "price": 799,
+      "name": "Grill Burger",
+      "price": 349,
       "type": "burger",
-      "description": "Crunchy chicken with cheddar slice",
-      "image": "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=800&q=85&auto=format&fit=crop"
-    },
-    {
-      "id": 7,
-      "name": "Supreme Loaded Pizza",
-      "price": 2499,
-      "type": "pizza",
-      "description": "Chicken, sausages, veggies & olives",
-      "image": "https://images.unsplash.com/photo-1571066811602-716837d681de?w=800&q=85&auto=format&fit=crop"
-    },
-    {
-      "id": 8,
-      "name": "Grilled Club Burger",
-      "price": 899,
-      "type": "burger",
-      "description": "Smoky grilled patty with lettuce",
-      "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=800&q=85&auto=format&fit=crop"
-    },
-    {
-      "id": 9,
-      "name": "Masala Fries",
-      "price": 350,
-      "type": "fries",
-      "description": "Crispy fries with special masala",
-      "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?w=800&q=85"
+      "description": "Smoky grilled chicken patty",
+      "image": "https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 10,
-      "name": "Club Sandwich",
-      "price": 650,
-      "type": "sandwich",
-      "description": "Chicken, egg, cheese & mayo",
-      "image": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=85"
+      "name": "Standard Pizza (Small)",
+      "price": 449,
+      "type": "pizza",
+      "description": "Classic flavors (Tikka/Fajita)",
+      "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 11,
+      "name": "Standard Pizza (Medium)",
+      "price": 799,
+      "type": "pizza",
+      "description": "Classic flavors (Tikka/Fajita)",
+      "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 12,
+      "name": "Standard Pizza (Large)",
+      "price": 1149,
+      "type": "pizza",
+      "description": "Classic flavors (Tikka/Fajita)",
+      "image": "https://images.unsplash.com/photo-1628840042765-356cda07504e?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 13,
+      "name": "Family Pizza (13 inch)",
+      "price": 1349,
+      "type": "pizza",
+      "description": "Perfect for the family",
+      "image": "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 14,
+      "name": "XL Pizza",
+      "price": 1699,
+      "type": "pizza",
+      "description": "Extra Large feast",
+      "image": "https://images.unsplash.com/photo-1593560708920-63892806d936?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 15,
+      "name": "Special Pizza (Small)",
+      "price": 549,
+      "type": "pizza",
+      "description": "Chef's special recipe",
+      "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 16,
+      "name": "Special Pizza (Medium)",
+      "price": 949,
+      "type": "pizza",
+      "description": "Chef's special recipe",
+      "image": "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 17,
+      "name": "Malai Boti Pizza (Medium)",
+      "price": 949,
+      "type": "pizza",
+      "description": "Creamy Malai Boti topping",
+      "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 18,
+      "name": "Kababi Pizza (Medium)",
+      "price": 1149,
+      "type": "pizza",
+      "description": "Topped with Kabab chunks",
+      "image": "https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 19,
+      "name": "Crown Crust Pizza (Medium)",
+      "price": 1199,
+      "type": "pizza",
+      "description": "Stuffed crust delight",
+      "image": "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 20,
+      "name": "X-Treme Pizza (Medium)",
+      "price": 1300,
+      "type": "pizza",
+      "description": "Fully loaded toppings",
+      "image": "https://images.unsplash.com/photo-1571066811602-716837d681de?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 30,
+      "name": "Shawarma",
+      "price": 199,
+      "type": "shawarma",
+      "description": "Classic Chicken Shawarma",
+      "image": "https://images.unsplash.com/photo-1633321769033-6953f75087d5?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 31,
+      "name": "Achari Shawarma",
+      "price": 199,
+      "type": "shawarma",
+      "description": "Spicy pickle flavor",
+      "image": "https://images.unsplash.com/photo-1633321769033-6953f75087d5?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 32,
+      "name": "Chicken Cheese Shawarma",
+      "price": 249,
+      "type": "shawarma",
+      "description": "Loaded with cheese",
+      "image": "https://images.unsplash.com/photo-1633321769033-6953f75087d5?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 40,
+      "name": "Chicken Paratha",
+      "price": 199,
+      "type": "paratha",
+      "description": "Roll paratha with chicken",
+      "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 41,
+      "name": "Chicken Cheese Paratha",
+      "price": 299,
+      "type": "paratha",
+      "description": "Roll paratha with cheese",
+      "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 42,
+      "name": "Zinger Roll Paratha",
+      "price": 299,
+      "type": "paratha",
+      "description": "Crispy zinger in paratha",
+      "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 50,
+      "name": "Chicken Nuggets (6 pcs)",
+      "price": 300,
+      "type": "sides",
+      "description": "Golden fried nuggets",
+      "image": "https://images.unsplash.com/photo-1562967914-608f82629710?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 51,
+      "name": "Chicken Wings (5 pcs)",
+      "price": 300,
+      "type": "sides",
+      "description": "Spicy fried wings",
+      "image": "https://images.unsplash.com/photo-1569691899455-88464f6d3ab1?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 52,
+      "name": "Fries (Small)",
+      "price": 200,
+      "type": "sides",
+      "description": "Crispy potato fries",
+      "image": "https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 53,
+      "name": "Loaded Fries",
+      "price": 450,
+      "type": "sides",
+      "description": "Fries with chicken & cheese",
+      "image": "https://images.unsplash.com/photo-1585109649139-3668018951a7?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 60,
+      "name": "Pasta (Small)",
+      "price": 350,
+      "type": "pasta",
+      "description": "Chicken pasta",
+      "image": "https://images.unsplash.com/photo-1563379926898-05f4575a45d8?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 61,
+      "name": "Flaming Pasta (Small)",
+      "price": 399,
+      "type": "pasta",
+      "description": "Spicy pasta",
+      "image": "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?auto=format&fit=crop&w=500&q=60"
+    },
+    {
+      "id": 62,
+      "name": "Crunchy Pasta (Small)",
+      "price": 449,
+      "type": "pasta",
+      "description": "Pasta with crunch",
+      "image": "https://images.unsplash.com/photo-1611270629569-8b357cb88da9?auto=format&fit=crop&w=500&q=60"
     }
   ]
 }

@@ -3,152 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Red & Chilli Pizza Cafe</title>
+    <title>Red & Chili Cafe Menu</title>
     
     <link rel="icon" href="/image/ican.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Lobster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #E74C3C;
-            --bg-dark: #121212;
-            --bg-card: #1E1E1E;
+            --primary: #E74C3C; /* Red */
+            --accent: #FFD700;  /* Yellow */
+            --bg-dark: #000000; /* Black */
+            --bg-card: #1a1a1a;
             --text-white: #ffffff;
-            --text-gray: #9ca3af;
+            --text-gray: #cccccc;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; -webkit-tap-highlight-color: transparent; }
         body { background-color: var(--bg-dark); color: var(--text-white); overflow-x: hidden; padding-bottom: 80px; }
 
+        /* Navbar */
         .navbar {
-            position: fixed; top: 0; width: 100%; padding: 10px 5%;
-            background: rgba(18, 18, 18, 0.9); backdrop-filter: blur(10px);
-            z-index: 100; border-bottom: 1px solid rgba(255,255,255,0.05);
+            position: fixed; top: 0; width: 100%; padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.95); backdrop-filter: blur(10px);
+            z-index: 100; border-bottom: 2px solid var(--primary);
             display: flex; align-items: center; gap: 12px;
         }
-        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.1rem; color: white; text-decoration: none; letter-spacing: 1px; }
-        .brand span { color: var(--primary); }
-        .nav-logo-img { height: 45px; width: 45px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+        .brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.3rem; color: var(--accent); text-decoration: none; letter-spacing: 1px; font-family: 'Lobster', cursive; }
+        .brand span { color: var(--primary); font-family: 'Lobster', cursive; }
+        .nav-logo-img { height: 40px; width: 40px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
 
-        .hero { margin-top: 85px; padding: 0 5%; margin-bottom: 30px; }
-        .hero h1 { font-size: 2rem; line-height: 1.2; }
-        .hero p { color: var(--text-gray); margin-top: 5px; }
+        /* Hero */
+        .hero { margin-top: 90px; padding: 0 5%; margin-bottom: 30px; text-align: center; }
+        .hero h1 { font-size: 2.5rem; line-height: 1.2; color: var(--accent); font-family: 'Lobster', cursive; }
+        .hero p { color: var(--text-white); margin-top: 5px; font-size: 1rem; }
 
-        .section-title { font-size: 1.4rem; font-weight: 800; margin: 0 5% 15px; display: flex; align-items: center; gap: 10px; }
+        /* Section Titles */
+        .section-title { 
+            font-size: 1.8rem; font-weight: 800; margin: 0 5% 15px; 
+            display: flex; align-items: center; gap: 10px; 
+            color: var(--accent); font-family: 'Lobster', cursive;
+            text-shadow: 2px 2px 0px #000;
+        }
         .section-title i { color: var(--primary); }
 
+        /* Deals Slider */
         .deals-wrapper { display: flex; overflow-x: auto; gap: 15px; padding: 0 5% 30px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
         .deals-wrapper::-webkit-scrollbar { display: none; }
         
         .deal-card {
             min-width: 280px; max-width: 320px; background: var(--bg-card);
             border-radius: 16px; overflow: hidden; scroll-snap-align: center;
-            border: 1px solid rgba(255,255,255,0.1); position: relative; flex-shrink: 0;
+            border: 1px solid #333; position: relative; flex-shrink: 0;
             transition: transform 0.2s ease; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
-        .deal-card:hover { transform: translateY(-5px); }
-        .deal-badge { position: absolute; top: 10px; left: 10px; background: var(--primary); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; }
-        .deal-img { width: 100%; height: 150px; object-fit: cover; }
+        .deal-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .deal-badge { position: absolute; top: 10px; left: 10px; background: var(--primary); color: white; padding: 4px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 800; box-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+        .deal-img { width: 100%; height: 160px; object-fit: cover; }
         .deal-content { padding: 15px; }
-        .deal-name { font-size: 1.1rem; font-weight: 700; margin-bottom: 5px; }
-        .deal-desc { font-size: 0.8rem; color: #aaa; margin-bottom: 10px; height: 35px; overflow: hidden; }
-        .deal-footer { display: flex; justify-content: space-between; align-items: center; }
-        .deal-price { font-size: 1.2rem; color: var(--primary); font-weight: 800; }
+        .deal-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 5px; color: var(--accent); }
+        
+        /* FIXED: Description Look */
+        .deal-desc { 
+            font-size: 0.85rem; color: var(--text-gray); margin-bottom: 10px; 
+            height: 40px; overflow: hidden; 
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+            line-height: 1.3;
+        }
 
-        .category-strip { position: sticky; top: 65px; z-index: 90; background: var(--bg-dark); padding: 10px 5%; display: flex; gap: 10px; overflow-x: auto; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 20px; }
+        .deal-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; padding-top: 10px; }
+        .deal-price { font-size: 1.4rem; color: var(--primary); font-weight: 800; }
+        .view-btn { font-size: 0.8rem; color: white; background: #333; padding: 5px 10px; border-radius: 4px; }
+
+        /* Menu Categories */
+        .category-strip { position: sticky; top: 70px; z-index: 90; background: var(--bg-dark); padding: 10px 5%; display: flex; gap: 10px; overflow-x: auto; border-bottom: 1px solid #333; margin-bottom: 20px; }
         .category-strip::-webkit-scrollbar { display: none; }
-        .cat-pill { padding: 8px 20px; border-radius: 50px; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); color: #aaa; font-weight: 600; white-space: nowrap; cursor: pointer; transition: 0.2s; }
-        .cat-pill.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .cat-pill { padding: 8px 20px; border-radius: 50px; background: #222; border: 1px solid #444; color: var(--text-gray); font-weight: 600; white-space: nowrap; cursor: pointer; transition: 0.2s; }
+        .cat-pill.active { background: var(--accent); color: black; border-color: var(--accent); font-weight: 800; }
 
+        /* Menu Grid */
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; padding: 0 5%; }
-        .menu-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; }
+        .menu-card { background: var(--bg-card); border-radius: 12px; overflow: hidden; border: 1px solid #333; display: flex; flex-direction: column; }
         .menu-img { width: 100%; height: 120px; object-fit: cover; }
         .menu-content { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; }
-        .menu-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 5px; }
-        .menu-desc { font-size: 0.75rem; color: #777; margin-bottom: 10px; flex-grow: 1; }
+        .menu-name { font-size: 1rem; font-weight: 700; margin-bottom: 5px; color: white; }
+        .menu-desc { font-size: 0.75rem; color: #999; margin-bottom: 10px; flex-grow: 1; }
         .menu-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
-        .btn-icon { width: 30px; height: 30px; background: rgba(255,255,255,0.1); color: white; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .btn-icon:hover { background: var(--primary); color: white; }
+        .menu-price { font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+        .btn-icon { width: 32px; height: 32px; background: var(--accent); color: black; border: none; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; transition: 0.2s; }
+        .btn-icon:active { transform: scale(0.9); }
 
-        .fab-cart { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(231, 76, 60, 0.4); cursor: pointer; z-index: 1000; }
-        .fab-count { position: absolute; top: -5px; right: -5px; background: white; color: black; font-weight: 800; font-size: 0.8rem; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        /* Cart FAB */
+        .fab-cart { position: fixed; bottom: 25px; right: 25px; width: 60px; height: 60px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 20px rgba(231, 76, 60, 0.6); cursor: pointer; z-index: 1000; border: 2px solid white; }
+        .fab-count { position: absolute; top: -5px; right: -5px; background: var(--accent); color: black; font-weight: 800; font-size: 0.8rem; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid black; }
+
+        /* Sidebar & Overlay */
         .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1001; opacity: 0; pointer-events: none; transition: 0.3s; }
         .overlay.active { opacity: 1; pointer-events: all; }
-        .sidebar { position: fixed; top: 0; right: -100%; width: 85%; max-width: 400px; height: 100%; background: #1a1d24; z-index: 1002; transition: 0.3s; display: flex; flex-direction: column; }
+        .sidebar { position: fixed; top: 0; right: -100%; width: 85%; max-width: 400px; height: 100%; background: #111; z-index: 1002; transition: 0.3s; display: flex; flex-direction: column; border-left: 1px solid #333; }
         .sidebar.active { right: 0; }
-        .sidebar-header { padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .sidebar-header { padding: 20px; border-bottom: 1px solid #333; display: flex; justify-content: space-between; align-items: center; background: #1a1a1a; }
+        .sidebar-header h3 { color: var(--accent); font-family: 'Lobster', cursive; letter-spacing: 1px; }
         .sidebar-body { flex-grow: 1; overflow-y: auto; padding: 15px; }
-        .cart-item { display: flex; gap: 10px; margin-bottom: 15px; background: rgba(255,255,255,0.05); padding: 8px; border-radius: 8px; align-items: center; }
+        .cart-item { display: flex; gap: 10px; margin-bottom: 15px; background: #222; padding: 10px; border-radius: 8px; align-items: center; border: 1px solid #333; }
         .cart-item img { width: 50px; height: 50px; border-radius: 6px; object-fit: cover; }
-        .sidebar-footer { padding: 20px; background: #14161b; }
-        .input-field { width: 100%; background: #2a2d35; border: 1px solid #444; padding: 12px; border-radius: 8px; color: white; margin-bottom: 10px; font-size: 0.9rem; }
-        .checkout-btn { width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .sidebar-footer { padding: 20px; background: #1a1a1a; border-top: 1px solid #333; }
+        .input-field { width: 100%; background: #333; border: 1px solid #555; padding: 12px; border-radius: 8px; color: white; margin-bottom: 10px; font-size: 0.9rem; outline: none; }
+        .input-field:focus { border-color: var(--accent); }
+        .checkout-btn { width: 100%; padding: 14px; background: #25D366; color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
         
-        .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 10px 20px; border-radius: 30px; z-index: 2000; font-size: 0.9rem; animation: fade 2s forwards; }
+        /* Toast */
+        .toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: var(--accent); color: black; padding: 10px 25px; border-radius: 30px; z-index: 2000; font-size: 0.9rem; font-weight: 700; animation: fade 2s forwards; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         @keyframes fade { 0% { opacity: 0; top: 0; } 20% { opacity: 1; top: 20px; } 80% { opacity: 1; top: 20px; } 100% { opacity: 0; top: 0; } }
 
-        /* --- NEW: Deal Details Modal --- */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
-            z-index: 1050; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
-        }
+        /* Modal */
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(5px); z-index: 1050; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
         .modal-overlay.active { opacity: 1; pointer-events: all; }
-
-        .deal-modal {
-            position: fixed; top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 90%; max-width: 450px;
-            background: var(--bg-card); border-radius: 20px;
-            z-index: 1051; opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
-        }
+        .deal-modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0.9); width: 90%; max-width: 400px; background: #1a1a1a; border-radius: 16px; z-index: 1051; opacity: 0; pointer-events: none; transition: 0.3s ease; border: 1px solid var(--accent); overflow: hidden; }
         .deal-modal.active { opacity: 1; pointer-events: all; transform: translate(-50%, -50%) scale(1); }
-
-        .modal-close {
-            position: absolute; top: 15px; right: 15px; font-size: 1.5rem; color: white; cursor: pointer;
-            background: rgba(0,0,0,0.5); width: 35px; height: 35px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2;
-        }
-        .modal-img { width: 100%; height: 220px; object-fit: cover; }
+        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 1.2rem; color: white; cursor: pointer; background: rgba(0,0,0,0.6); width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 2; }
+        .modal-img { width: 100%; height: 200px; object-fit: cover; }
         .modal-content { padding: 20px; }
-        .modal-content h2 { font-size: 1.8rem; margin-bottom: 10px; }
-        .modal-content p { font-size: 1rem; color: var(--text-gray); line-height: 1.6; margin-bottom: 20px; }
-        .modal-footer { display: flex; justify-content: space-between; align-items: center; }
+        .modal-content h2 { font-size: 1.5rem; margin-bottom: 10px; color: var(--accent); font-family: 'Lobster', cursive; }
+        
+        /* Modal List Styling */
+        .modal-list { list-style: none; padding: 0; text-align: left; margin-bottom: 20px; max-height: 200px; overflow-y: auto; }
+        .modal-list li { padding: 8px 0; border-bottom: 1px solid #333; color: #ddd; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+        .modal-list li:before { content: '✔'; color: var(--primary); font-weight: bold; }
+        .modal-list li:last-child { border-bottom: none; }
+
+        .modal-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #333; padding-top: 15px; }
         .modal-footer span { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-        .modal-footer button { padding: 12px 25px; font-size: 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
+        .modal-footer button { padding: 12px 30px; font-size: 1rem; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <a href="#" class="brand">
-            <img src="/image/log.jpeg" alt="Logo" class="nav-logo-img">
-            RED & <span>CHILLI</span>
+            <img src="/image/log.jpeg" alt="Logo" class="nav-logo-img" onerror="this.style.display='none'">
+            Red & <span>Chili</span>
         </a>
     </nav>
 
     <div class="hero">
-        <h1>Taste the <span style="color:var(--primary)">Flames.</span></h1>
-        <p>Pizza, Burgers & More. Delivered Fast.</p>
+        <h1>Red & <span style="color:var(--primary)">Chili</span> Cafe</h1>
+        <p>Low Cost High Quality</p>
     </div>
 
     <div class="section-title"><i class="fas fa-fire"></i> Hot Deals</div>
     <div class="deals-wrapper">
         {{#each deals}}
-        <!-- UPDATED: Card now opens modal on click -->
         <div class="deal-card" onclick="showDealDetails({{this.id}})">
-            <div class="deal-badge">SAVE MONEY</div>
-            <img src="{{this.image}}" class="deal-img" onerror="this.src='https://placehold.co/400x200?text=Deal'">
+            <div class="deal-badge">HOT</div>
+            <img src="{{this.image}}" class="deal-img" onerror="this.src='https://placehold.co/400x200/1a1a1a/FFD700?text=Deal'">
             <div class="deal-content">
                 <div class="deal-name">{{this.name}}</div>
-                <div class="deal-desc">{{this.description}}</div>
+                <!-- FIXED: Items joined with commas to look like a description -->
+                <div class="deal-desc">
+                    {{#each this.items}}
+                        {{this}}{{#unless @last}}, {{/unless}}
+                    {{/each}}
+                </div>
                 <div class="deal-footer">
                     <div class="deal-price">₨{{this.price}}</div>
-                    <!-- UPDATED: Removed button, added prompt -->
-                    <div style="color: var(--text-gray); font-size: 0.8rem;">View Details <i class="fas fa-arrow-right"></i></div>
+                    <div class="view-btn">View List <i class="fas fa-list"></i></div>
                 </div>
             </div>
         </div>
@@ -159,24 +178,28 @@
     
     <div class="category-strip">
         <button class="cat-pill active" onclick="renderMenu('all', this)">All</button>
-        <button class="cat-pill" onclick="renderMenu('burger', this)">Burgers</button>
         <button class="cat-pill" onclick="renderMenu('pizza', this)">Pizza</button>
-        <button class="cat-pill" onclick="renderMenu('fries', this)">Fries</button>
-        <button class="cat-pill" onclick="renderMenu('sandwich', this)">Sandwich</button>
+        <button class="cat-pill" onclick="renderMenu('burger', this)">Burgers</button>
+        <button class="cat-pill" onclick="renderMenu('shawarma', this)">Shawarma</button>
+        <button class="cat-pill" onclick="renderMenu('paratha', this)">Paratha</button>
+        <button class="cat-pill" onclick="renderMenu('pasta', this)">Pasta</button>
+        <button class="cat-pill" onclick="renderMenu('sides', this)">Sides</button>
     </div>
 
     <div class="menu-grid" id="menu-grid"></div>
 
+    <!-- Cart Button -->
     <div class="fab-cart" onclick="toggleCart()">
         <i class="fas fa-shopping-bag" style="font-size: 1.4rem; color: white;"></i>
         <div class="fab-count" id="cart-count">0</div>
     </div>
 
+    <!-- Sidebar Cart -->
     <div class="overlay" id="overlay" onclick="toggleCart()"></div>
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h3>Your Order</h3>
-            <i class="fas fa-times" style="cursor:pointer; font-size:1.2rem" onclick="toggleCart()"></i>
+            <i class="fas fa-times" style="cursor:pointer; font-size:1.2rem; color:white;" onclick="toggleCart()"></i>
         </div>
         <div class="sidebar-body" id="cart-items"></div>
         <div class="sidebar-footer">
@@ -184,22 +207,25 @@
                 <span>Total:</span> <span id="cart-total" style="color:var(--primary)">₨0</span>
             </div>
             <input type="text" id="customer-name" class="input-field" placeholder="Full Name">
-            <input type="tel" id="customer-phone" class="input-field" placeholder="Phone Number (e.g. 03277757234)">
+            <input type="tel" id="customer-phone" class="input-field" placeholder="Phone Number">
             <input type="text" id="customer-address" class="input-field" placeholder="Delivery Address">
-            <button class="checkout-btn" onclick="checkout()">ORDER ON WHATSAPP</button>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> ORDER ON WHATSAPP
+            </button>
         </div>
     </div>
 
     <div id="toast-container"></div>
 
-    <!-- NEW: Deal Details Modal HTML -->
+    <!-- Deal Modal -->
     <div class="modal-overlay" id="modal-overlay" onclick="closeDealModal()"></div>
     <div class="deal-modal" id="deal-modal">
         <i class="fas fa-times modal-close" onclick="closeDealModal()"></i>
         <img src="" alt="Deal Image" id="modal-image" class="modal-img">
         <div class="modal-content">
             <h2 id="modal-name"></h2>
-            <p id="modal-description"></p>
+            <!-- Container for the list -->
+            <div id="modal-list-container"></div>
             <div class="modal-footer">
                 <span id="modal-price"></span>
                 <button id="modal-add-btn">ADD TO CART</button>
@@ -221,15 +247,21 @@
             const grid = document.getElementById('menu-grid');
             grid.innerHTML = '';
             const items = type === 'all' ? menuData : menuData.filter(i => i.type.toLowerCase() === type.toLowerCase());
+            
+            if(items.length === 0) {
+                grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#666; padding:20px;">No items found in this category.</div>';
+                return;
+            }
+
             items.forEach(item => {
                 grid.innerHTML += `
                     <div class="menu-card">
-                        <img src="${item.image}" class="menu-img" onerror="this.src='https://placehold.co/200?text=Food'">
+                        <img src="${item.image}" class="menu-img" onerror="this.src='https://placehold.co/200/1a1a1a/FFD700?text=Food'">
                         <div class="menu-content">
                             <div class="menu-name">${item.name}</div>
                             <div class="menu-desc">${item.description}</div>
                             <div class="menu-footer">
-                                <div style="font-weight:700; color:var(--primary)">₨${item.price}</div>
+                                <div class="menu-price">₨${item.price}</div>
                                 <button class="btn-icon" onclick="addToCart(${item.id})"><i class="fas fa-plus"></i></button>
                             </div>
                         </div>
@@ -258,14 +290,14 @@
             const totalEl = document.getElementById('cart-total');
             list.innerHTML = '';
             let total = 0;
-            if(cart.length === 0) list.innerHTML = '<p style="text-align:center; color:#777; margin-top:20px;">Cart is empty</p>';
+            if(cart.length === 0) list.innerHTML = '<p style="text-align:center; color:#555; margin-top:20px;">Your cart is empty.</p>';
             cart.forEach((item, index) => {
                 total += item.price;
                 list.innerHTML += `
                     <div class="cart-item">
                         <img src="${item.image}" onerror="this.src='https://placehold.co/50'">
                         <div style="flex-grow:1">
-                            <div style="font-size:0.9rem; font-weight:600;">${item.name}</div>
+                            <div style="font-size:0.9rem; font-weight:600; color:white;">${item.name}</div>
                             <div style="color:var(--primary); font-size:0.85rem;">₨${item.price}</div>
                         </div>
                         <i class="fas fa-trash" style="color:#ff4444; cursor:pointer" onclick="removeFromCart(${index})"></i>
@@ -285,11 +317,14 @@
             const name = document.getElementById('customer-name').value.trim();
             const phone = document.getElementById('customer-phone').value.trim();
             const address = document.getElementById('customer-address').value.trim();
-            if(!name || !phone || !address) return showToast('Please fill all delivery details!');
-            let msg = `*NEW ORDER - Red & Chilli Pizza Cafe*\n------------------\n`;
+            
+            if(!name || !phone || !address) return showToast('Please fill all details!');
+            
+            let msg = `*NEW ORDER - Red & Chili Cafe*\n------------------\n`;
             cart.forEach((item, i) => { msg += `${i+1}. ${item.name} (₨${item.price})\n`; });
             const total = cart.reduce((sum, i) => sum + i.price, 0);
             msg += `------------------\n*Total: ₨${total}*\n\n*Customer Details:*\n*Name:* ${name}\n*Phone:* ${phone}\n*Address:* ${address}`;
+            
             const businessPhone = "923277757234"; 
             window.open(`https://wa.me/${businessPhone}?text=${encodeURIComponent(msg)}`, '_blank');
         }
@@ -302,15 +337,23 @@
             setTimeout(() => div.remove(), 2000);
         }
 
-        // --- NEW: Modal Functions ---
+        // Modal Functions
         function showDealDetails(dealId) {
             const deal = dealsData.find(d => d.id === dealId);
             if (!deal) return;
 
             document.getElementById('modal-image').src = deal.image;
             document.getElementById('modal-name').innerText = deal.name;
-            document.getElementById('modal-description').innerText = deal.description;
             document.getElementById('modal-price').innerText = `₨${deal.price}`;
+            
+            // Generate List HTML
+            const listContainer = document.getElementById('modal-list-container');
+            if(deal.items && Array.isArray(deal.items)) {
+                const listItems = deal.items.map(item => `<li>${item}</li>`).join('');
+                listContainer.innerHTML = `<ul class="modal-list">${listItems}</ul>`;
+            } else {
+                listContainer.innerHTML = `<p>${deal.description || ''}</p>`;
+            }
             
             const addBtn = document.getElementById('modal-add-btn');
             addBtn.onclick = () => {
@@ -327,7 +370,7 @@
             document.getElementById('deal-modal').classList.remove('active');
         }
 
-        // Init
+        // Initialize
         renderMenu('all');
     </script>
 </body>
