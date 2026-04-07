@@ -151,7 +151,15 @@
         <p>Low Cost High Quality</p>
     </div>
 
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input id="menu-search" class="input-field" placeholder="Search menu (name or description)..." aria-label="Search menu" autocomplete="off">
+            <button id="search-clear" class="search-clear hidden" aria-label="Clear search" title="Clear search"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
     <div class="section-title"><i class="fas fa-fire"></i> Hot Deals</div>
+    <p id="no-deals" class="no-deals hidden">No deals found</p>
     <div class="deals-wrapper">
         {{#each deals}}
         <div class="deal-card" onclick="showDealDetails({{this.id}})">
@@ -190,7 +198,7 @@
 
     <!-- Cart Button -->
     <div class="fab-cart" onclick="toggleCart()">
-        <i class="fas fa-shopping-bag" style="font-size: 1.4rem; color: white;"></i>
+        <i class="fas fa-shopping-bag fab-icon"></i>
         <div class="fab-count" id="cart-count">0</div>
     </div>
 
@@ -203,8 +211,8 @@
         </div>
         <div class="sidebar-body" id="cart-items"></div>
         <div class="sidebar-footer">
-            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-weight:800; font-size:1.2rem;">
-                <span>Total:</span> <span id="cart-total" style="color:var(--primary)">₨0</span>
+            <div class="total-row">
+                <span>Total:</span> <span id="cart-total" class="cart-total-amount">₨0</span>
             </div>
             <input type="text" id="customer-name" class="input-field" placeholder="Full Name">
             <input type="tel" id="customer-phone" class="input-field" placeholder="Phone Number">
@@ -221,7 +229,7 @@
     <div class="modal-overlay" id="modal-overlay" onclick="closeDealModal()"></div>
     <div class="deal-modal" id="deal-modal">
         <i class="fas fa-times modal-close" onclick="closeDealModal()"></i>
-        <img src="" alt="Deal Image" id="modal-image" class="modal-img">
+        <img src="" alt="Deal Image" id="modal-image" class="modal-img" width="450" height="220" decoding="async">
         <div class="modal-content">
             <h2 id="modal-name"></h2>
             <!-- Container for the list -->
@@ -273,19 +281,32 @@
         function addToCart(id) {
             const item = allProducts.find(p => p.id === id);
             if(item) {
-                cart.push(item);
+                const cartItem = cart.find(p => p.id === id);
+                if (cartItem) {
+                    cartItem.quantity++;
+                } else {
+                    cart.push({...item, quantity: 1});
+                }
                 updateCartUI();
                 showToast(`Added ${item.name}`);
             }
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
+        function removeFromCart(id) {
+            const itemIndex = cart.findIndex(p => p.id === id);
+            if (itemIndex > -1) {
+                const item = cart[itemIndex];
+                if (item.quantity > 1) {
+                    item.quantity--;
+                } else {
+                    cart.splice(itemIndex, 1);
+                }
+                updateCartUI();
+            }
         }
 
         function updateCartUI() {
-            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('cart-count').innerText = cart.reduce((sum, item) => sum + item.quantity, 0);
             const list = document.getElementById('cart-items');
             const totalEl = document.getElementById('cart-total');
             list.innerHTML = '';
@@ -300,7 +321,7 @@
                             <div style="font-size:0.9rem; font-weight:600; color:white;">${item.name}</div>
                             <div style="color:var(--primary); font-size:0.85rem;">₨${item.price}</div>
                         </div>
-                        <i class="fas fa-trash" style="color:#ff4444; cursor:pointer" onclick="removeFromCart(${index})"></i>
+                        <i class="fas fa-trash cart-trash" onclick="removeFromCart(${item.id})"></i>
                     </div>
                 `;
             });
